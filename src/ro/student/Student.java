@@ -1,10 +1,10 @@
 package ro.student;
 
 public class Student {
-    private final String numarMatricol;
-    private final String prenume;
-    private final String nume;
-    private final String formatieDeStudiu;
+    private String numarMatricol;
+    private  String prenume;
+    private  String nume;
+    private  String formatieDeStudiu;
 
     public Student(String numarMatricol, String prenume, String nume, String formatieDeStudiu) {
         this.numarMatricol = numarMatricol;
