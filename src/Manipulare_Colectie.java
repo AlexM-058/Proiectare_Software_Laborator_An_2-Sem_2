@@ -1,5 +1,5 @@
 import java.util.*;
-
+//Tema lab 2 
 public class Manipulare_Colectie {
      public List<Integer> x = new ArrayList<>();
     public List<Integer> y = new ArrayList<>();
@@ -62,8 +62,7 @@ public class Manipulare_Colectie {
         xMinusY.removeAll(y);
     }
     public void XPlusYLimitedByP() {
-        xPlusYLimitedByP.addAll(x);
-        xPlusYLimitedByP.retainAll(y);
+        xPlusYLimitedByP.addAll(xPlusY);
         xPlusYLimitedByP.removeIf(e -> e > p);
     }
     public void afis_XPlusY() {
