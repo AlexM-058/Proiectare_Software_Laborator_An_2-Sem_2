@@ -14,7 +14,7 @@ public class MainLab3 {
 
         try {
             Path inputText = Paths.get("in.txt");
-            Path outputText = Paths.get("out.txt");
+            Path outputText = Paths.get("out.txt");// cale
             List<String> lines = textProcessor.citesteLinii(inputText);
 
             String rezultatA = textProcessor.adaugaLinieNouaLaSfarsitDeLinie(lines);

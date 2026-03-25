@@ -33,6 +33,7 @@ public class StudentFileProcessor {
 
     public List<Student> sorteazaDupaNume(List<Student> studenti) {
         List<Student> rezultat = new ArrayList<>(studenti);
+
         rezultat.sort(Comparator.comparing(Student::getNume)
                 .thenComparing(Student::getPrenume)
                 .thenComparingInt(Student::getNumarMatricol));
