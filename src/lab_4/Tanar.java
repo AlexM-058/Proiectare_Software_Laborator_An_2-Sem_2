@@ -14,6 +14,6 @@ public class Tanar {
 
     @Override
     public String toString() {
-        return "Tanar{" + "name=" + name + ", age=" + age + ", address=" + address + '}';
+        return "Tanar { " + "name = " + name + ", age = " + age + ", address = " + address + " }";
     }
 }

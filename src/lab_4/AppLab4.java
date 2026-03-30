@@ -23,7 +23,18 @@ public class AppLab4 {
             System.out.println(key + " " + varste.get(key));
         }
         HashMap<String,Tanar> tineri = new HashMap<>();
-//        tineri.
+         for(String key : varste.keySet()){
+             if(adrese.containsKey(key)){
+                 Tanar t = new Tanar(key,varste.get(key),adrese.get(key));
+                 tineri.put(key,t);
+             }
+         }
+         System.out.println("\nTineri");
+         for(String key : tineri.keySet()){
+             Tanar t = tineri.get(key);
+             System.out.println(t);
+         }
+
 
     }
 }
