@@ -1,25 +1,45 @@
 package student;
 
+import lab_3.StudentFileProcessor;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
 public class MainStudent {
+    private static final Path STUDENTI_PATH = Paths.get("studenti_in.txt");
+    private static final Path NOTE_PATH = Paths.get("src", "student", "note_anon.txt");
+
     public static void main(String[] args) {
+        StudentFileProcessor studentProcessor = new StudentFileProcessor();
         CatalogStudenti catalog = new CatalogStudenti();
-        catalog.adaugaStudent(new Student(112, "Maria", "Popa", "TI21/1"));
-        catalog.adaugaStudent(new Student(113, "Andrei", "Ionescu", "TI21/1"));
-        catalog.adaugaStudent(new Student(114, "Elena", "Georgescu", "TI21/1"));
-        catalog.adaugaStudent(new Student(115, "Vlad", "Dumitrescu", "TI21/2"));
-        catalog.adaugaStudent(new Student(116, "Ioana", "Stan", "TI21/2"));
-        catalog.adaugaStudent(new Student(117, "Radu", "Marin", "TI21/2"));
-        catalog.adaugaStudent(new Student(118, "Ana", "Petrescu", "TI21/3"));
-        catalog.adaugaStudent(new Student(119, "Mihai", "Enache", "TI21/3"));
-        catalog.adaugaStudent(new Student(120, "Bianca", "Ilie", "TI21/3"));
-        catalog.adaugaStudent(new Student(121, "Stefan", "Matei", "TI21/1"));
 
-        Student cautat = new Student(112, "Maria", "Popa", "TI21/1");
-        Student cautat2 = new Student(120, "Alis", "Popa", "TI21/2");
+        try {
+            catalog.adaugaStudenti(studentProcessor.citesteStudenti(STUDENTI_PATH));
+            citesteSiAlocaNote(catalog, NOTE_PATH);
+            catalog.afiseazaCatalog();
+        } catch (IOException | IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
 
-        System.out.println("Catalogul:");
-        catalog.afiseazaCatalog();
-        System.out.println("Studentul cautat exista: " + catalog.contineStudent(cautat));
-        System.out.println("Studentul cautat 2 exista: " + catalog.contineStudent(cautat2));
+    private static void citesteSiAlocaNote(CatalogStudenti catalog, Path notePath) throws IOException {
+        List<String> linii = Files.readAllLines(notePath);
+        for (String linie : linii) {
+            if (linie.isBlank()) {
+                continue;
+            }
+
+            String[] campuri = linie.split(",");
+            if (campuri.length != 2) {
+                throw new IllegalArgumentException("Linie invalida pentru nota: " + linie);
+            }
+
+            int numarMatricol = Integer.parseInt(campuri[0].trim());
+            double nota = Double.parseDouble(campuri[1].trim());
+            catalog.actualizeazaNota(numarMatricol, nota);
+        }
     }
 }
