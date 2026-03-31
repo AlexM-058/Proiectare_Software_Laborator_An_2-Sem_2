@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainStudent {
     private static final Path STUDENTI_PATH = Paths.get("studenti_in.txt");
@@ -20,9 +22,33 @@ public class MainStudent {
             catalog.adaugaStudenti(studentProcessor.citesteStudenti(STUDENTI_PATH));
             citesteSiAlocaNote(catalog, NOTE_PATH);
             catalog.afiseazaCatalog();
+
+            float notaM = gasesteNota("Bianca", "Popescu", catalog.getStudentiMap());
+            float notaN = gasesteNota("Ioan", "Popa", catalog.getStudentiMap());
+
+            System.out.println("Nota pentru Bianca Popescu: " + notaM);
+            System.out.println("Nota pentru Ioan Popa: " + notaN);
         } catch (IOException | IllegalArgumentException e) {
             e.printStackTrace();
         }
+    }
+
+    public static float gasesteNota(String prenume, String nume, Map<Integer, Student> studentiMap) {
+        Map<String, Student> studentiDupaNume = new HashMap<>();
+
+        for (Student student : studentiMap.values()) {
+            String cheie = student.getPrenume().trim() + "-" + student.getNume().trim();
+            studentiDupaNume.put(cheie, student);
+        }
+
+        String cheieCautata = prenume.trim() + "-" + nume.trim();
+        Student studentGasit = studentiDupaNume.get(cheieCautata);
+
+        if (studentGasit == null) {
+            return 0.0f;
+        }
+
+        return (float) studentGasit.getNota();
     }
 
     private static void citesteSiAlocaNote(CatalogStudenti catalog, Path notePath) throws IOException {
