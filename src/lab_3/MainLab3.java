@@ -13,8 +13,8 @@ public class MainLab3 {
         StudentFileProcessor studentProcessor = new StudentFileProcessor();
 
         try {
-            Path inputText = Paths.get("in.txt");
-            Path outputText = Paths.get("out.txt");// cale
+            Path inputText = Paths.get("Inputs", "in.txt");
+            Path outputText = Paths.get("Outputs", "out.txt");// cale
             List<String> lines = textProcessor.citesteLinii(inputText);
 
             String rezultatA = textProcessor.adaugaLinieNouaLaSfarsitDeLinie(lines);
@@ -27,9 +27,9 @@ public class MainLab3 {
 
             textProcessor.scrieRezultat(outputText, textProcessor.construiesteContinutOut(rezultatA, rezultatB));
 
-            Path inputStudenti = Paths.get("studenti_in.txt");
-            Path outputStudenti = Paths.get("studenti_out.txt");
-            Path outputStudentiSorted = Paths.get("studenti_out_sorted.txt");
+            Path inputStudenti = Paths.get("Inputs", "studenti_in.txt");
+            Path outputStudenti = Paths.get("Outputs", "studenti_out.txt");
+            Path outputStudentiSorted = Paths.get("Outputs", "studenti_out_sorted.txt");
 
             List<Student> studenti = studentProcessor.citesteStudenti(inputStudenti);
             System.out.println("Studentii cititi din fisier:");
