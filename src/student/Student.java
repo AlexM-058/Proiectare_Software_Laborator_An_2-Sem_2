@@ -1,12 +1,14 @@
 package student;
 
+import java.util.Locale;
 import java.util.Objects;
 
 public class Student {
-    protected  int numarMatricol;
-    protected   String prenume;
-    protected   String nume;
-    protected   String formatieDeStudiu;
+    private final int numarMatricol;
+    private final String prenume;
+    private final String nume;
+    private final String formatieDeStudiu;
+    private double nota;
 
     public Student(int numarMatricol, String prenume, String nume, String formatieDeStudiu) {
         this.numarMatricol = numarMatricol;
@@ -31,8 +33,16 @@ public class Student {
         return formatieDeStudiu;
     }
 
+    public double getNota() {
+        return nota;
+    }
+
     public String toCsvLine() {
         return numarMatricol + "," + prenume + "," + nume + "," + formatieDeStudiu;
+    }
+
+    public void setNota(double nota) {
+        this.nota = nota;
     }
 
     @Override
@@ -42,6 +52,7 @@ public class Student {
                 ", prenume='" + prenume + '\'' +
                 ", nume='" + nume + '\'' +
                 ", formatieDeStudiu='" + formatieDeStudiu + '\'' +
+                ", nota=" + String.format(Locale.US, "%.2f", nota) +
                 '}';
     }
 
@@ -54,14 +65,11 @@ public class Student {
             return false;
         }
         Student student = (Student) o;
-        return numarMatricol == student.numarMatricol
-                && Objects.equals(prenume, student.prenume)
-                && Objects.equals(nume, student.nume)
-                && Objects.equals(formatieDeStudiu, student.formatieDeStudiu);
+        return numarMatricol == student.numarMatricol;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(numarMatricol, prenume, nume, formatieDeStudiu);
+        return Objects.hash(numarMatricol);
     }
 }
