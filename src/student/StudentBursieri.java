@@ -1,5 +1,6 @@
 package student;
 
+import java.util.Locale;
 import java.util.Objects;
 
 public class StudentBursieri extends Student {
@@ -33,6 +34,16 @@ public class StudentBursieri extends Student {
         }
         StudentBursieri that = (StudentBursieri) o;
         return Double.compare(that.cuantumBursa, cuantumBursa) == 0 && super.equals(o);
+    }
+
+    @Override
+    public String toCsvLine() {
+        return getNumarMatricol() + "," +
+                getPrenume() + "," +
+                getNume() + "," +
+                getFormatieDeStudiu() + "," +
+                String.format(Locale.US, "%.2f", getNota()) + "," +
+                String.format(Locale.US, "%.2f", cuantumBursa);
     }
 
     @Override

@@ -55,7 +55,7 @@ public class StudentFileProcessor {
         }
     }
 
-    public void scrieStudenti(Path path, List<Student> studenti) throws IOException {
+    public void scrieStudenti(Path path, List<? extends Student> studenti) throws IOException {
         List<String> lines = new ArrayList<>();
         for (Student student : studenti) {
             lines.add(student.toCsvLine());
