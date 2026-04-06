@@ -3,10 +3,10 @@ package student;
 import java.util.Objects;
 
 public class Student {
-    private final int numarMatricol;
-    private final String prenume;
-    private final String nume;
-    private final String formatieDeStudiu;
+    protected  int numarMatricol;
+    protected   String prenume;
+    protected   String nume;
+    protected   String formatieDeStudiu;
 
     public Student(int numarMatricol, String prenume, String nume, String formatieDeStudiu) {
         this.numarMatricol = numarMatricol;
