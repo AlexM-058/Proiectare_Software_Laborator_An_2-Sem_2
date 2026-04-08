@@ -1,8 +1,7 @@
 package student.examples;
 
 import lab_3.StudentFileProcessor;
-import student.StudentBursieri;
-
+import student.*;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,7 +13,7 @@ public class MainStudentLab5 {
 
     public static void main(String[] args) {
         StudentFileProcessor studentFileProcessor = new StudentFileProcessor();
-        List<StudentBursieri> bursieri = new ArrayList<>();
+        List<Student> bursieri = new ArrayList<>();
 
         bursieri.add(new StudentBursieri(1025, "Andrei", "Popa", "ISM141/2", 8.70, 725.50));
         bursieri.add(new StudentBursieri(1024, "Ioan", "Mihalcea", "ISM141/1", 9.80, 801.10));
