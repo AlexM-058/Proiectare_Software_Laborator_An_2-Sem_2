@@ -24,6 +24,11 @@ public class NewIntCalculator extends ACalculator {
         return this;
     }
 
+    public NewIntCalculator divide(Integer value) {
+        state = (Integer) state / value;
+        return this;
+    }
+
     @Override
     public Object result() {
         return super.result();

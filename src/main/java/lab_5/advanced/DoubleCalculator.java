@@ -24,12 +24,21 @@ public class DoubleCalculator extends ACalculator {
         return this;
     }
 
+    public DoubleCalculator divide(Double value) {
+        state = (Double) state / value;
+        return this;
+    }
+
     @Override
     public void init() {
         state = 0.0;
     }
     @Override
     public Double result() {
-        return Math.round((Double) state * 100.0) / 100.0;
+        Double value = (Double) state;
+        if (Double.isInfinite(value) || Double.isNaN(value)) {
+            return value;
+        }
+        return Math.round(value * 100.0) / 100.0;
     }
 }

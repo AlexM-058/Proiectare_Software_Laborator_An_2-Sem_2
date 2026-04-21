@@ -3,10 +3,10 @@ package student;
 import java.util.Locale;
 import java.util.Objects;
 
-public class StudentBursieri extends Student {
+public class StudentBursier extends Student {
     private final double cuantumBursa;
 
-    public StudentBursieri(
+    public StudentBursier(
             int numarMatricol,
             String prenume,
             String nume,
@@ -17,6 +17,10 @@ public class StudentBursieri extends Student {
         super(numarMatricol, prenume, nume, formatieDeStudiu);
         setNota(nota);
         this.cuantumBursa = cuantumBursa;
+    }
+
+    public double getCuantumBursa() {
+        return cuantumBursa;
     }
 
     @Override
@@ -32,7 +36,7 @@ public class StudentBursieri extends Student {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        StudentBursieri that = (StudentBursieri) o;
+        StudentBursier that = (StudentBursier) o;
         return Double.compare(that.cuantumBursa, cuantumBursa) == 0 && super.equals(o);
     }
 
@@ -48,6 +52,6 @@ public class StudentBursieri extends Student {
 
     @Override
     public String toString() {
-        return super.toString() + " cuantumBursa: " + cuantumBursa;
+        return super.toString() + String.format(Locale.US, " [ %6.2f ]", cuantumBursa);
     }
 }
