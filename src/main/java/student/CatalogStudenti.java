@@ -36,7 +36,7 @@ public class CatalogStudenti {
                     "Nu exista student pentru numarul matricol: " + numarMatricol
             );
         }
-        student.setNota(nota);
+        studenti.put(numarMatricol, student.withNota(nota));
     }
 
     public List<Student> getStudenti() {

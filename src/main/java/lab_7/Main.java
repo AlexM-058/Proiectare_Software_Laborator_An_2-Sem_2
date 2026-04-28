@@ -5,6 +5,10 @@ import lab_7.forms.Form;
 import lab_7.forms.Square;
 import lab_7.forms.Triangle;
 import lab_7.util.PasswordMaker;
+import student.Student;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,5 +32,36 @@ public class Main {
         System.out.println("5:" + pm2.getPassword());
         System.out.println("\n7.6.2 c) Number of time getInstance() has been called: "+PasswordMaker.getCallingCounts());
 
+        //7.6.3 Imutabilitate
+        Set<Student> studenti = new LinkedHashSet<>();
+        studenti.add(new Student(1, "Ana", "Popescu", "TI 211"));
+        studenti.add(new Student(2, "Bogdan", "Ionescu", "TI 211"));
+        studenti.add(new Student(3, "Carmen", "Stan", "TI 211"));
+        studenti.add(new Student(4, "Dan", "Marin", "TI 211"));
+        studenti.add(new Student(5, "Elena", "Vasile", "TI 211"));
+
+        studenti = imparteInDouaFormatii(studenti, "TI 211_1", "TI 211_2");
+        System.out.println("\n7.6.3 Studentii impartiti in doua formatii:");
+        for (Student student : studenti) {
+            System.out.println(student);
+        }
+    }
+
+    static Set<Student> imparteInDouaFormatii(Set<Student> studenti, String formatia1, String formatia2) {
+        Set<Student> rezultat = new LinkedHashSet<>();
+        int limitaFormatia1 = (studenti.size() + 1) / 2;
+        int index = 0;
+
+        for (Student student : studenti) {
+            String nouaFormatie = index < limitaFormatia1 ? formatia1 : formatia2;
+            rezultat.add(schimbaFormatia(student, nouaFormatie));
+            index++;
+        }
+
+        return rezultat;
+    }
+
+    static Student schimbaFormatia(Student student, String nouaFormatieDeStudiu) {
+        return student.withFormatieDeStudiu(nouaFormatieDeStudiu);
     }
 }

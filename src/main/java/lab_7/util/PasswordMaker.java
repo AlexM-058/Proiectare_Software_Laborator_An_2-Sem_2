@@ -3,7 +3,7 @@ package lab_7.util;
 public class PasswordMaker {
     private static final int MAGIC_NUMBER = 3;
     private static final String MAGIC_STRING;
-    private static PasswordMaker instance;
+    private static final PasswordMaker instance;
     private static int callingCounts;
 
     private String name;
@@ -11,6 +11,7 @@ public class PasswordMaker {
     static {
         StringRandomizer srand = new StringRandomizer();
         MAGIC_STRING = srand.randomString(20);
+        instance = new PasswordMaker("Lab7");
     }
 
     private PasswordMaker(String name) {
@@ -19,9 +20,6 @@ public class PasswordMaker {
 
     public static PasswordMaker getInstance() {
         callingCounts++;
-        if (instance == null) {
-            instance = new PasswordMaker("Lab7");
-        }
         return instance;
     }
 

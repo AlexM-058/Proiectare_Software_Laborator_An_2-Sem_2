@@ -1,21 +1,21 @@
 package lab_7.forms;
 
 public class Form {
-    private static int instanceCount;
+    private static int counter;
     private String color;
 
     public Form() {
-        instanceCount++;
+        counter++;
         color = "white";
     }
 
     public Form(String color) {
-        instanceCount++;
+        counter++;
         this.color = color;
     }
 
     public static int getInstanceCount() {
-        return instanceCount;
+        return counter;
     }
 
     public float getArea() {

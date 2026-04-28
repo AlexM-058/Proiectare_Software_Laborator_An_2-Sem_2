@@ -8,13 +8,18 @@ public class Student {
     private final String prenume;
     private final String nume;
     private final String formatieDeStudiu;
-    private double nota;
+    private final double nota;
 
     public Student(int numarMatricol, String prenume, String nume, String formatieDeStudiu) {
+        this(numarMatricol, prenume, nume, formatieDeStudiu, 0.0);
+    }
+
+    public Student(int numarMatricol, String prenume, String nume, String formatieDeStudiu, double nota) {
         this.numarMatricol = numarMatricol;
         this.prenume = prenume;
         this.nume = nume;
         this.formatieDeStudiu = formatieDeStudiu;
+        this.nota = nota;
     }
 
     public int getNumarMatricol() {
@@ -41,8 +46,12 @@ public class Student {
         return numarMatricol + "," + prenume + "," + nume + "," + formatieDeStudiu;
     }
 
-    public void setNota(double nota) {
-        this.nota = nota;
+    public Student withNota(double nota) {
+        return new Student(numarMatricol, prenume, nume, formatieDeStudiu, nota);
+    }
+
+    public Student withFormatieDeStudiu(String nouaFormatieDeStudiu) {
+        return new Student(numarMatricol, prenume, nume, nouaFormatieDeStudiu, nota);
     }
 
     @Override

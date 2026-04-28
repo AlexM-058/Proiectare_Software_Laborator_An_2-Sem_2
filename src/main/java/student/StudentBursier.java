@@ -14,13 +14,36 @@ public class StudentBursier extends Student {
             double nota,
             double cuantumBursa
     ) {
-        super(numarMatricol, prenume, nume, formatieDeStudiu);
-        setNota(nota);
+        super(numarMatricol, prenume, nume, formatieDeStudiu, nota);
         this.cuantumBursa = cuantumBursa;
     }
 
     public double getCuantumBursa() {
         return cuantumBursa;
+    }
+
+    @Override
+    public StudentBursier withNota(double nota) {
+        return new StudentBursier(
+                getNumarMatricol(),
+                getPrenume(),
+                getNume(),
+                getFormatieDeStudiu(),
+                nota,
+                cuantumBursa
+        );
+    }
+
+    @Override
+    public StudentBursier withFormatieDeStudiu(String nouaFormatieDeStudiu) {
+        return new StudentBursier(
+                getNumarMatricol(),
+                getPrenume(),
+                getNume(),
+                nouaFormatieDeStudiu,
+                getNota(),
+                cuantumBursa
+        );
     }
 
     @Override
