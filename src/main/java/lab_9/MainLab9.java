@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.*;
 
 public class MainLab9 {
+    //9.3.1
     private List<Integer> randomNumbers = new ArrayList<>();
     private List<Integer> numbers = new ArrayList<>();
     private List<Double> doublenumbers = new ArrayList<>();
@@ -54,6 +55,32 @@ public class MainLab9 {
        String text = found ? "12 found":"12 not found";
        System.out.println(text);
     }
+    //9.3.2
+    private List<String> listaCuvintelor = new ArrayList<>();
+    private String propozitie = "Acesta este un program scris in java pentru expresii lambada";
+
+    protected void findWordsLongerThan5(){
+        listaCuvintelor.clear();
+        Arrays.stream(propozitie.split("\\s+"))
+                .filter(word -> word.length() > 5)
+                .forEach(x ->{
+                        listaCuvintelor.add(x);
+                        System.out.print( x + " ");}) ;
+        System.out.println();
+    }
+    protected void findLetterP(){
+        listaCuvintelor.stream()
+                .filter(word ->word.startsWith("p"))
+                .forEach(x ->System.out.print(x + " "));
+        System.out.println();
+    }
+
+    protected void sortList(){
+
+        listaCuvintelor.stream().sorted().forEach(x -> System.out.print(x + " "));
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         MainLab9 app = new MainLab9();
         app.generateRandomNumbers();
@@ -62,5 +89,8 @@ public class MainLab9 {
         int min = app.minRandomNumbers();
         app.newlistwithRandomNumbersbetween10and20();
         app.find12();
+        app.findWordsLongerThan5();
+        app.sortList();
+        app.findLetterP();
     }
 }
