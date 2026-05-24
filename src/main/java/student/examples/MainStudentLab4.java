@@ -1,8 +1,8 @@
 package student.examples;
 
-import lab_3.StudentFileProcessor;
-import student.CatalogStudenti;
-import student.Student;
+import labs.lab_3.StudentFileProcessor;
+import student.model.CatalogStudenti;
+import student.model.Student;
 
 import java.io.IOException;
 import java.nio.file.Files;

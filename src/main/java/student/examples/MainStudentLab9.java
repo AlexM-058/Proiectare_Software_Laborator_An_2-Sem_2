@@ -1,6 +1,6 @@
 package student.examples;
 
-import student.Student;
+import student.model.Student;
 import java.util.*;
 
 
@@ -34,14 +34,14 @@ public class MainStudentLab9 {
         System.out.println();
     }
     protected void modifyList(){
-        students.stream()
-                .filter(student -> student.getNota() < 4)
-                .forEach(student -> {
-                    student.setNota(4.00);
-                    System.out.println(student + " ");
-                });
-
-
+        for (int index = 0; index < students.size(); index++) {
+            Student student = students.get(index);
+            if (student.getNota() < 4) {
+                Student updatedStudent = student.withNota(4.00);
+                students.set(index, updatedStudent);
+                System.out.println(updatedStudent + " ");
+            }
+        }
     }
     protected double sumOfGrades(){
         return students.stream()
