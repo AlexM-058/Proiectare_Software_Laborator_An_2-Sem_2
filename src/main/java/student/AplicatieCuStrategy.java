@@ -1,5 +1,7 @@
 package student;
 
+import student.lab_11.ExportTimerDecorator;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,17 +22,17 @@ public class AplicatieCuStrategy {
         Exporter exporter = new Exporter();
 
         IStudentiExport strategyConsola = new StudentiInConsola();
-        exporter.startExport(strategyConsola, studenti);
+        exporter.startExport(new ExportTimerDecorator(strategyConsola), studenti);
 
         System.out.println("----------------------------------------");
 
         String fisierText = "Outputs/studentiStrategyText.txt";
         IStudentiExport strategyFisierText = new StudentiInFisierText(fisierText);
-        exporter.startExport(strategyFisierText, studenti);
+        exporter.startExport(new ExportTimerDecorator(strategyFisierText), studenti);
 
         String fisierExcel = "Outputs/studentiStrategyExcel.xlsx";
         IStudentiExport strategyFisierExcel = new StudentiInFisierXlsx(fisierExcel);
-        exporter.startExport(strategyFisierExcel, studenti);
+        exporter.startExport(new ExportTimerDecorator(strategyFisierExcel), studenti);
 
         IStudentiImport citireText = new StudentiDinFisierText(fisierText);
         List<Student> studentiDinText = citireText.doImport();
