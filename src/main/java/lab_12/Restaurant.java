@@ -1,4 +1,4 @@
-package ro.ulbs.proiectaresoftware.lab12;
+package lab_12;
 
 public class Restaurant {
 

@@ -1,4 +1,4 @@
-package ro.ulbs.proiectaresoftware.lab12;
+package lab_12;
 
 import java.util.Arrays;
 
@@ -10,14 +10,17 @@ public class ApplicationLab12 {
         CookingTasks t3 = new CookingTasks(Arrays.asList("Grab flour","grab eggs","grab sugar","grab cinamon","cook all","add cream","add icecream","DONE Dessert"));
         CookingTasks t4 = new CookingTasks(Arrays.asList("Grab rice and boil","DONE Rice"));
 
-        t1.cook();
-        t2.cook();
-        t3.cook();
-        t4.cook();
+        t1.start();
+        t2.start();
+        t3.start();
+        t4.start();
 
 
         try {
-            Thread.sleep(1500);
+            t1.join();
+            t2.join();
+            t3.join();
+            t4.join();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

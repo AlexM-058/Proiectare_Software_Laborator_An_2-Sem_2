@@ -1,8 +1,8 @@
-package ro.ulbs.proiectaresoftware.lab12;
+package lab_12;
 
 import java.util.List;
 
-public class CookingTasks {
+public class CookingTasks extends Thread {
 
     private List<String> tasks;
 
@@ -10,7 +10,9 @@ public class CookingTasks {
         this.tasks = tasks;
     }
 
-    public void cook() {
+
+    @Override
+    public void run() {
 
         Long t1 = System.currentTimeMillis();
         Restaurant.getRestaurant().washHands();
