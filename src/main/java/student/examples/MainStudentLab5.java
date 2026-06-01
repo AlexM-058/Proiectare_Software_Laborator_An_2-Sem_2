@@ -1,8 +1,8 @@
 package student.examples;
 
-import labs.lab_3.StudentFileProcessor;
-import student.model.Student;
-import student.model.StudentBursier;
+import lab_3.StudentFileProcessor;
+import student.Student;
+import student.StudentBursier;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
